@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 };
-export const api= process.env.PORT || 'http://localhost:8000'
+export const api= 'http://localhost:8000'
 
 /*
  * For easier debugging in development mode, you can import the following file
