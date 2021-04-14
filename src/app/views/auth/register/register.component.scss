@@ -1,0 +1,85 @@
+.body{
+    background-size: cover;
+    padding-top: 0;
+    padding-bottom: 50px;
+}
+
+form{
+    border-radius: 34px;
+    width: 400px;
+    margin: 80px auto 0 auto;
+    background: #fff;
+    border:1px solid #99999957;
+    padding: 0 15px 20px 15px;
+    position: relative;
+    @media(max-width:767px){
+        width:100% !important;
+        
+    }
+    h1{
+        text-transform: capitalize;
+        color:#999;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .main_user{
+        font-size: 63px;
+        position: absolute;
+        top: -44px;
+        padding: 19px 29px;
+        border-radius: 50%;
+        left: 38%;
+        color: #ffffff;
+        background: #3A7FC4;
+    }
+    .input_user{
+        position: absolute;
+        right: 25px;
+        top: 41.5%;
+        color: #555555e0;
+    }
+    .input_key{
+        position: absolute;
+        right: 25px;
+        top: 58%;
+        color: #555555e0;
+    }
+    h1{
+        margin: 30px 0;
+        color:#222;
+    }
+    .main_div{
+        margin-bottom: 25px;
+        width:100%;
+        input{
+            width: 100%;
+            padding:9px;
+            border-radius:10px;
+            outline: none;
+            border:1px solid #F2F2F2;
+            background: #F2F2F2;
+        }
+    }
+    .alert{
+        margin-top:5px;
+        padding:3px 8px;
+        border-radius: 5px;;
+    }
+    button{
+        display: block;
+        margin: 0 auto;
+        padding:10px 35px;
+        font-size: 20px;
+        border-radius: 10px;
+        background: #3A7FC4 !important;
+    }
+  
+    .pass_group{
+        position: relative;
+        i{
+            position: absolute;
+            top: 63%;
+            right: 5px;
+        }
+    }
+}

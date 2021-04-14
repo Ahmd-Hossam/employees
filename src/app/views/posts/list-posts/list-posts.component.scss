@@ -1,0 +1,24 @@
+.title{
+    div{
+        h2{
+            font-weight: bold;
+            @media(max-width: 450px){
+                font-size: 25px;
+            }
+        }
+    }
+}
+table{
+    width: 100%;
+    margin-top: 20px;
+    thead,tbody{
+        tr{
+            td{
+                border:1px solid #999;
+                padding:5px;
+            }
+        }
+    }
+}
+
+

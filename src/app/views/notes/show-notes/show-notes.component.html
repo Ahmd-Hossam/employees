@@ -1,0 +1,16 @@
+
+<form [formGroup]="myform" (submit)='onsubmit(itemId)' >
+    <div class="modal-body">
+        <div class="form-group">
+            <label for=""> title </label>
+            <input type="text" name='title' formControlName="title" placeholder="title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for=""> description </label>
+            <textarea name="description" formControlName="description" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark" > add </button>
+    </div>
+</form>

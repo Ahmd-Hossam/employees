@@ -1,0 +1,19 @@
+nav{
+    background: #343A40 !important;
+    .navbar-brand{
+        color:#fff;
+    }
+    .navbar-toggler{
+        background: #f1f1f1;
+    }
+    ul{
+        li{
+            a{
+                color:#f1f1f1 !important;
+                &:hover{
+                    color:#999 !important
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<section class="body">
+    <div class="container">
+        <form [formGroup]="myform" (submit)='register()'>
+            <h1 class="text-center">register</h1>
+            <div class='form-group'>
+                <label for=""> Name  </label> &nbsp;
+                <input formControlName='name' [ngClass]="{'is-invalid': submited && f.name.errors}"   class='form-control' placeholder="Name">
+            </div>
+            <div class='form-group'>
+                <label for=""> email </label> 
+                <input type="email" formControlName='email' [ngClass]="{'is-invalid': submited && f.email.errors}"   class='form-control' placeholder="Email">
+            </div>
+    
+            <div class='form-group pass_group'>
+                <label for="postDescription"> password </label>
+                <input [type]="ShowPassord == false ? 'password' : 'text'" formControlName='password' name="password" [ngClass]="{'is-invalid': submited && f.password.errors}"   rows="6" class="form-control" placeholder="Password" minlength="8" >
+                <i class="fa" [hidden]="!myform.controls.password?.value" [ngClass]="{'fa-eye-slash': !ShowPassord,'fa-eye': ShowPassord }" (click)="showPassword()"> </i>
+            </div>
+  
+            <button class="btn btn-primary"> register </button>
+            <br>
+            <p class="text-center">  have an acount ? <a routerLink='/auth'> Login </a></p>
+
+            <!--
+               <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    register
+               </button>
+            -->
+        </form>
+    </div>
+</section>
