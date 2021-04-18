@@ -11,7 +11,7 @@ import { NotesService } from 'src/app/shard/services/notes.service';
 export class ShowNotesComponent implements OnInit {
   myform!: FormGroup;
   @Input() itemId:any;
-  @Output() items= new EventEmitter
+  @Output() items= new EventEmitter <any> ()
   constructor(private fb: FormBuilder, private note_Ser: NotesService, private toaster: ToastrService) { }
 
   ngOnInit(): void {
@@ -21,7 +21,6 @@ export class ShowNotesComponent implements OnInit {
 
   build() {
     this.myform = this.fb.group({
-      title: [null, Validators.required],
       description: [null, Validators.required],
     })
   }
@@ -33,10 +32,12 @@ export class ShowNotesComponent implements OnInit {
         this.toaster.success('item added successfuly', 'successfuly')
       },
       err => {
+        console.log("this is the errror ", err);
+        
         this.toaster.error(err, "Erorr")
       }
     );
-    this.afterUpdate()
+    this.afterUpdate()//updated  data
   }
 
 
@@ -45,21 +46,20 @@ export class ShowNotesComponent implements OnInit {
     this.note_Ser.update(id, data).subscribe(
       res => {
         this.toaster.success('item updated susscussfuly', 'updated')
+        this.afterUpdate();//updated  data
       },
       err => {
         this.toaster.error(err, 'Error')
       }
     )
-    this.afterUpdate();
   }
 
-  //get item details 
+  //get item details by id
   getDetails(id:any) {
     this.note_Ser.getItem(id).subscribe(
       res => {
         this.myform.patchValue({
-          title: res.title,
-          description: res.description
+          description: res.data.description
         })
       }
     )
@@ -75,11 +75,11 @@ export class ShowNotesComponent implements OnInit {
     }
   }
 
-   //update items 
+  //after click update items without refresh 
   afterUpdate(){
     this.note_Ser.getAll().subscribe(
       res=>{
-        this.items.emit(res)
+        this.items.emit(res.data)
       }
     )
   }

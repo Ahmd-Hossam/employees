@@ -5,24 +5,25 @@
       <ng-container *ngIf='items'>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <button (click)="popup(pop,'')" class="btn btnsuccess" type='button' style="background-color: #007BFF; color:#f1f1f1">
+            <button (click)="edit(pop,'')" class="btn btnsuccess" type='button' style="background-color: #007BFF; color:#f1f1f1">
               <i class="fas fa-plus"></i>
             </button>
           </div>
-
           <div class="search-hero">
-            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="true" placeholder="Start searching">
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="no" placeholder="Start searching">
           </div>
         </div>
 
         <div class="card" *ngFor="let item of items | filter:searchText">
-          <div class="card-body">
-            <h5 class='card-title'> {{item.title}}
-              <a (click)="popup(pop, item.id)" href="javascript:;" class="a-none"> <i class="fa fa-edit"></i> </a>
+          <div class="card-body"   [style.padding]="'5px'">
+            <h5 class='card-title' [style.font-size]="'16px'"> 
+              <span class="span_title"> Date: <span class="child"> {{item.createdAt | slice:0:10}}  </span> </span> &nbsp; &nbsp;
+              <span class="span_title"> Time: <span class="child"> {{item.createdAt | slice:11:19}} </span> </span> 
+              <a (click)="edit(pop, item._id)" href="javascript:;" class="a-none"> <i class="fa fa-edit"></i> </a>
             </h5>
             <p class='card-text'>{{item.description}}</p>
 
-            <a  href="javascript:;" class="" (click)='delateItem(delate, item.id)'>
+            <a  href="javascript:;" class="" (click)='delateItem(delate, item._id)'>
               <i class="fas fa-trash" style="color: red;"></i>
             </a>
           </div>
@@ -34,9 +35,9 @@
 
 
 <!-- add edit modal -->
-<ng-template #pop let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+<ng-template #pop let-c="close" let-d="dismiss" >
+  <div class="modal-header" style="background: #f4f5db;">
+    <h4 class="modal-title" id="modal-basic-title">{{ itemId === "" ? 'New' : 'Note Edit'}} </h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -55,10 +56,15 @@
     </button>
   </div>
   <div class="modal-body">
-    <p> Are You Sure To Delete This Iitem !</p>
+    <p> Are You Sure To Delete This Iitem ? </p>
   </div>
   <div class="modal-footer">
       <button type="button" class="btn btn-primary" aria-label="Close" (click)="d('Cross click')"> Cancel </button>
     <button  type="button" class="btn btn-danger" (click)="c('Save click')"> Delate </button>
   </div>
 </ng-template>
+
+
+
+
+

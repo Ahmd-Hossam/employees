@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { api as env} from '../../../environments/environment'
+import { environment as env} from '../../../environments/environment'
 import {HttpRequest, HttpHandler, HttpEvent, HttpInterceptor} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
@@ -11,7 +11,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token=this.auth_ser.getToken()
-    if(request.url.startsWith(env)){
+    if(request.url.startsWith(env.url_api)){
       request = request.clone({
         setHeaders:{
           Authorization:`Bearer ${token}`

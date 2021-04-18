@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
   <div class="container-fluid">
     <a class="navbar-brand" href="#"> Todoist </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" (click)="burgur()" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -10,27 +10,68 @@
         <li class="nav-item">
           <a  class="nav-link" routerLink=""> Home </a>
         </li>
+      
         <li class="nav-item">
-          <a  class="nav-link" routerLink="/admin/posts"> Admin </a>
-        </li>
-        <li class="nav-item">
-          <a  class="nav-link" routerLink="/user/notes"> Users </a>
+          <a  class="nav-link" routerLink="/user/notes"> Notes </a>
         </li>
       </ul>
 
-      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-        <li class="nav-item">
-          <a href="/login" class="nav-link" routerLink="auth">Login</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"  *ngIf="!isLoggedIn">
+          <a  class="nav-link" routerLink="auth">Login</a>
         </li>
-        <li class="nav-item">
-          <a href="/login" class="nav-link" routerLink="auth/register"> Register </a>
+        <li class="nav-item"  *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="auth/register"> Register </a>
         </li>
         
-        <li class="nav-item">
-          <a  class="nav-link" (click)='logout()' >Logout</a>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a  class="nav-link" (click)='user(profile)' > <i class="fas fa-user-circle"></i> </a>
         </li>
+       
       </ul>
     </div>
   </div>
 </nav>
+
+
+<!-- delate item -->
+<ng-template #profile let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"> <i class="fas fa-info-circle"></i> info </h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" >
+    <div *ngFor='let user of userdata; index as i'>
+      <h2> Name: <span> {{user.name}}  </span>  </h2>
+      <h2> Email: <span> {{user.email}} </span> </h2>
+      <h2> Age:  <span> {{user.age}}   </span>   </h2>
+      <h2> Id:  <span> {{user._id}} </span></h2>
+    </div>
+  </div>
+  <div class="modal-footer" >
+    <div class="buttons">
+      <button class="btn btn-primary" (click)='logout()'> logout</button> &nbsp; &nbsp; or &nbsp; &nbsp;
+      <button class="btn btn-danger" (click)='delate()'> delate my acount </button>
+    </div>
+  </div>
+
+
+       <!-- 
+        <div>
+          <form [formGroup] = "myform" (ngSubmit)="onSubmit()">      
+            <div>
+              <input type="file" name="profile" (change)="onFileSelect($event)" />
+            </div>
+            <div>
+              <button type="submit">Upload</button>
+            </div>
+          </form>
+        </div>
+       -->
+    
+       
+ 
+</ng-template>
 

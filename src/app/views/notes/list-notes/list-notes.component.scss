@@ -12,3 +12,45 @@
         }
     }
 }
+
+.card{
+    background: #ffcb91;
+    .card-body{
+       h5{
+           border-bottom: 1px solid #343a403b;
+           padding-bottom: 5px;
+           position: relative;
+           .span_title{
+               position: absolute;
+               font-size: 16px !important;
+               color: #000;
+               font-weight: bold;
+               &:last-of-type{
+                   right: 30px;
+               }
+               .child{
+                   color: #222;
+                   font-weight: normal;
+               }
+           }
+           a{
+               position: absolute;
+               right: 3px;
+           }
+       } 
+    }
+}
+
+.input-group{
+    .search-hero{
+       input{
+        width: 285px !important;
+        border-bottom-left-radius: none !important;
+        border-top-left-radius: none !important;
+        outline: none !important;
+        @media(max-width:500px){
+            width: 283px !important;
+        }
+       }
+    }
+}

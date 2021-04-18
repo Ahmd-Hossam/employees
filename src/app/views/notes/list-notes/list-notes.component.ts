@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotesService } from 'src/app/shard/services/notes.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/shard/services/auth.service';
 
 
 @Component({
@@ -11,27 +12,31 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListNotesComponent implements OnInit {
   items:any[]=[]
-  itemId:any
-  constructor( private notes_ser:NotesService, private modal:NgbModal, private toastr:ToastrService) { }
+  itemId:any;
+  
+  constructor(private auth:AuthService, private notes_ser:NotesService, private modal:NgbModal, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.AllItems()
   }
 
+ 
+
+  
+ 
   //get all items
   AllItems(){
     this.notes_ser.getAll().subscribe(
       res=>{
-        this.items=res;
-        console.log(res);
-        
+        this.items=res.data;
+        // console.log(res); 
       }
     )
   }
 
 
-  //show popup
-  popup(popup:any, id:any){
+  //Edit item
+  edit(popup:any, id:any){
     this.itemId=id,
     this.modal.open(popup)
   }

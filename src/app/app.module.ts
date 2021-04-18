@@ -34,6 +34,7 @@ import { NavComponent } from './layout/nav/nav.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    //Ng2SearchPipeModule
     
   ],
   providers: [MyInterceptor],

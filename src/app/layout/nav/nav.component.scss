@@ -1,5 +1,8 @@
 nav{
-    background: #343A40 !important;
+    background: linear-gradient(47deg, #214252, #688090) !important;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
     .navbar-brand{
         color:#fff;
     }
@@ -13,6 +16,41 @@ nav{
                 &:hover{
                     color:#999 !important
                 }
+                i{
+                    color: #ffffff;
+                    background: #007bff;
+                    border-radius: 50%;
+                    font-size: 30px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.modal-header,.modal-body,.modal-footer{
+    background: #f4f5db;
+}
+
+.modal-body{
+    h2{
+        font-weight: bold;
+        font-size: 19px;
+        span{
+            font-weight: normal;
+            font-size: 18px;
+            color:#382e2eeb;
+        }
+    }
+}
+
+.modal-footer{
+    .buttons{
+        margin: auto;
+        button{
+            padding:4px 23px !important;
+            @media(max-width:500px){
+                padding:4px 15px !important;  
             }
         }
     }

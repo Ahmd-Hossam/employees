@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import {api as env} from '../../../environments/environment'
+import {environment as env} from '../../../environments/environment'
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, pipe, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, pipe, Subject, throwError } from 'rxjs';
 import { User } from '../interfaces/user'
 import { catchError, map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { formatDate } from '@angular/common';
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 
 @Injectable({
@@ -14,7 +16,8 @@ import { ToastrService } from 'ngx-toastr';
 export class AuthService {
   userSubject:BehaviorSubject<any>
   user:Observable<any>
-   
+ 
+
   constructor(private http:HttpClient, private router:Router, private toaster:ToastrService) { 
     this.userSubject= new BehaviorSubject<any>(localStorage.getItem('access_token'))
     this.user=this.userSubject.asObservable()
@@ -25,15 +28,12 @@ export class AuthService {
   }
 
   register(data:any){
-    return this.http.post<any>(`${env}/auth/register`,data)
-    .pipe(
-      catchError(this.handleError)
-      )
+    return this.http.post<any>(`${env.url_api}/user/register`,data)
   }
 
 
   login(data:any){
-    return this.http.post<any>(`${env}/auth/login`,data)
+    return this.http.post<any>(`${env.url_api}/user/login`,data)
   }
 
   getToken() {
@@ -46,8 +46,9 @@ export class AuthService {
     return (authToken !== null) ? true : false;
   }
 
-  
+
   Logout() {
+    localStorage.removeItem('user_data')
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
       this.router.navigate(['../auth']);
@@ -56,21 +57,30 @@ export class AuthService {
     }
   }
 
-
-  // Error 
-  handleError(error: HttpErrorResponse) {
-    let msg = '';
-    if (error.error instanceof ErrorEvent) {
-      // client-side error
-      this.toaster.error(error.error.message,'client-side error ')
-      msg = error.error.message;
-    } else {
-      // server-side error
-      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
-      this.toaster.error(error.error.message,'server-side error ')
-    }
-    return throwError(msg);
+  delate_User(){
+    return this.http.delete<any>(`${env.url_api}/user/me`)
   }
 
+
+  //shard 
+    private subject = new Subject<any>();
+    sendClickEvent() {
+      this.subject.next();
+    }
+    getClickEvent(): Observable<any>{ 
+      return this.subject.asObservable();
+    }
+
+
+
+  
+  postimg(file:any){
+    return this.http.post<any>(`${env.url_api}/user/me/avatar`,file)
+  }
+  getimg(){
+    return this.http.get<any>(`${env.url_api}/user/6077eda82bedfe0017e0af13/avatar`)
+  }
+
+  
   
 }

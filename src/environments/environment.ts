@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
+  url_api:'https://api-nodejs-todolist.herokuapp.com'
 };
-export const api= 'http://localhost:8000'
 
 /*
  * For easier debugging in development mode, you can import the following file

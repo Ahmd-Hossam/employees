@@ -40,7 +40,8 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         //Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/),
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$/)
-      ])]
+      ])],
+      age:['',Validators.required]
     })
   }
 
@@ -56,13 +57,13 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     this.auth_ser.register(this.myform.value).subscribe(
       res=>{
-        console.log(res['access_token']);
+        console.log(res.user);
        // localStorage.setItem('access_token',res.access_token)
         this.toastr.success("rigisterd successfuly", "Success")
         this.router.navigate(['../auth'])
       },
       err=>{
-        this.toastr.error(err.error.message,"Error")
+        this.toastr.error("This email is already in use! ", "Error")
       }
     )
   }

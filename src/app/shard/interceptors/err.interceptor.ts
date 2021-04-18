@@ -18,7 +18,7 @@ export class ErrInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(catchError (
       err =>{
         if([401,403].indexOf(err.status) !== -1){
-          this.router.navigate(['../auth/login'])
+          this.router.navigate(['../auth'])
         }
         return throwError (err);
       }
