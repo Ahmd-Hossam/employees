@@ -28,12 +28,12 @@ export class AuthService {
   }
 
   register(data:any){
-    return this.http.post<any>(`${env.url_api}/user/register`,data)
+    return this.http.post<any>(`${env.api}/user/register`,data)
   }
 
 
   login(data:any){
-    return this.http.post<any>(`${env.url_api}/user/login`,data)
+    return this.http.post<any>(`${env.api}/user/login`,data)
   }
 
   getToken() {
@@ -58,7 +58,7 @@ export class AuthService {
   }
 
   delate_User(){
-    return this.http.delete<any>(`${env.url_api}/user/me`)
+    return this.http.delete<any>(`${env.api}/user/me`)
   }
 
 
@@ -75,10 +75,10 @@ export class AuthService {
 
   
   postimg(file:any){
-    return this.http.post<any>(`${env.url_api}/user/me/avatar`,file)
+    return this.http.post<any>(`${env.api}/user/me/avatar`,file)
   }
   getimg(){
-    return this.http.get<any>(`${env.url_api}/user/6077eda82bedfe0017e0af13/avatar`)
+    return this.http.get<any>(`${env.api}/user/6077eda82bedfe0017e0af13/avatar`)
   }
 
   

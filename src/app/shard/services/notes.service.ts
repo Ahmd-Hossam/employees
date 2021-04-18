@@ -10,24 +10,24 @@ export class NotesService {
 
   //get All notes
   getAll(){
-    return this.http.get<any>(`${env.url_api}/task`)
+    return this.http.get<any>(`${env.api}/task`)
   }
   //oneitem by id 
   getItem(id:any){
-    return this.http.get<any>(`${env.url_api}/task/${id}`)
+    return this.http.get<any>(`${env.api}/task/${id}`)
   }
  
   //add data
   add(data:any){
-    return this.http.post<any>(`${env.url_api}/task`,data)
+    return this.http.post<any>(`${env.api}/task`,data)
   }
   //update data
   update(id:any, data:any){
-    return this.http.put<any>(`${env.url_api}/task/${id}`,data)
+    return this.http.put<any>(`${env.api}/task/${id}`,data)
   }
   //delate item
   delate(id:any){
-    return this.http.delete(`${env.url_api}/task/${id}`)
+    return this.http.delete(`${env.api}/task/${id}`)
   }
 
 }

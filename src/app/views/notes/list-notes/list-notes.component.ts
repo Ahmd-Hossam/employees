@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/shard/services/auth.service';
 export class ListNotesComponent implements OnInit {
   items:any[]=[]
   itemId:any;
-  
+  searchText:string ='' //for filter
   constructor(private auth:AuthService, private notes_ser:NotesService, private modal:NgbModal, private toastr:ToastrService) { }
 
   ngOnInit(): void {

@@ -9,12 +9,12 @@
               <i class="fas fa-plus"></i>
             </button>
           </div>
-          <div class="search-hero">
-            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="no" placeholder="Start searching">
-          </div>
+           <div class="search-hero">
+              <input class="form-control" type="text" name="search" [(ngModel)]="searchText"  placeholder="Start searching">
+            </div>
         </div>
 
-        <div class="card" *ngFor="let item of items | filter:searchText">
+        <div class="card" *ngFor="let item of items  | filter:searchText">
           <div class="card-body"   [style.padding]="'5px'">
             <h5 class='card-title' [style.font-size]="'16px'"> 
               <span class="span_title"> Date: <span class="child"> {{item.createdAt | slice:0:10}}  </span> </span> &nbsp; &nbsp;
