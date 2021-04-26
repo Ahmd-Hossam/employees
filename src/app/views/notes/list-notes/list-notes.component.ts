@@ -58,7 +58,7 @@ export class ListNotesComponent implements OnInit {
     this.modal.open(delate).result.then(res =>{
       this.notes_ser.delate(id).subscribe(
         respons=>{
-          this.toastr.success('item delated successfuly', 'succussfuly');
+          this.toastr.success('تم الحذف بنجاح');
           this.AllItems()
         }
       )

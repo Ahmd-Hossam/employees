@@ -29,12 +29,12 @@ export class ShowNotesComponent implements OnInit {
   additem(data: any) {
     this.note_Ser.add(data).subscribe(
       res => {
-        this.toaster.success('item added successfuly', 'successfuly')
+        this.toaster.success('تم اضافة موظف جديد')
       },
       err => {
-        console.log("this is the errror ", err);
+        console.log("خطا ", err);
         
-        this.toaster.error(err, "Erorr")
+        this.toaster.error(err, "خطا")
       }
     );
     this.afterUpdate()//updated  data
@@ -45,7 +45,7 @@ export class ShowNotesComponent implements OnInit {
   update(id: any, data: any) {
     this.note_Ser.update(id, data).subscribe(
       res => {
-        this.toaster.success('item updated susscussfuly', 'updated')
+        this.toaster.success('تم تعديل البيانات بنجاج')
         this.afterUpdate();//updated  data
       },
       err => {
