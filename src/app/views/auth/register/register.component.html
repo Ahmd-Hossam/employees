@@ -1,30 +1,30 @@
 <section class="body">
     <div class="container">
-        <form [formGroup]="myform" (submit)='register()'>
-            <h1 class="text-center">register</h1>
+        <form [formGroup]="myform" (submit)='register()' dir="rtl">
+            <h1 class="text-center">انشاء حساب</h1>
             <div class='form-group'>
-                <label for=""> Name  </label> &nbsp;
-                <input formControlName='name' [ngClass]="{'is-invalid': submited && f.name.errors}"   class='form-control' placeholder="Name">
+               
+                <input formControlName='name' [ngClass]="{'is-invalid': submited && f.name.errors}"   class='form-control' placeholder="الاسم ">
             </div>
-            <div class='form-group'>
-                <label for=""> email </label> 
-                <input type="email" formControlName='email' [ngClass]="{'is-invalid': submited && f.email.errors}"   class='form-control' placeholder="Email">
+            <div class='form-group text-right'>
+                
+                <input type="email" formControlName='email' [ngClass]="{'is-invalid': submited && f.email.errors}"   class='form-control' placeholder="الايميل ">
             </div>
     
-            <div class='form-group pass_group'>
-                <label for="postDescription"> password </label>
-                <input [type]="ShowPassord == false ? 'password' : 'text'" formControlName='password' name="password" [ngClass]="{'is-invalid': submited && f.password.errors}"   rows="6" class="form-control" placeholder="Password" minlength="8" >
+            <div class='form-group pass_group text-right'>
+              
+                <input [type]="ShowPassord == false ? 'password' : 'text'" formControlName='password' name="password" [ngClass]="{'is-invalid': submited && f.password.errors}"   rows="6" class="form-control" placeholder="كلمة السر" minlength="8" >
                 <i class="fa" [hidden]="!myform.controls.password?.value" [ngClass]="{'fa-eye-slash': !ShowPassord,'fa-eye': ShowPassord }" (click)="showPassword()"> </i>
             </div>
   
-            <div class='form-group'>
-                <label for=""> Age  </label> &nbsp;
-                <input formControlName='age' [ngClass]="{'is-invalid': submited && f.name.errors}"   class='form-control' placeholder="age">
+            <div class='form-group text-right'>
+                
+                <input formControlName='age' [ngClass]="{'is-invalid': submited && f.name.errors}"   class='form-control' placeholder="السن">
             </div>
 
-            <button class="btn btn-primary"> register </button>
+            <button class="btn btn-primary"> انشاء حساب </button>
             <br>
-            <p class="text-center">  have an acount ? <a routerLink='/auth'> Login </a></p>
+            <p class="text-center">  لدي حساب  ? <a routerLink='/auth'> تسجيل دخول </a></p>
 
             <!--
                <button [disabled]="loading" class="btn btn-primary">

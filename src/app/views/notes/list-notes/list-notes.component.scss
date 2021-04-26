@@ -1,3 +1,28 @@
+.head{
+    background-color: #bfb5a221;
+    padding:15px 45px;
+    margin-bottom: 50px;
+    h2{
+        color:#222;
+        font-weight: bold;
+    }
+}
+
+
+table{
+    width: 100%;
+    margin-top: 20px;
+    thead,tbody{
+        tr{
+            td{
+                border:1px solid #999;
+                padding:5px;
+            }
+        }
+    }
+}
+
+
 .plus{
     width: 50px;
     height: 50px;
@@ -13,33 +38,6 @@
     }
 }
 
-.card{
-    background: #ffcb91;
-    .card-body{
-       h5{
-           border-bottom: 1px solid #343a403b;
-           padding-bottom: 5px;
-           position: relative;
-           .span_title{
-               position: absolute;
-               font-size: 16px !important;
-               color: #000;
-               font-weight: bold;
-               &:last-of-type{
-                   right: 30px;
-               }
-               .child{
-                   color: #222;
-                   font-weight: normal;
-               }
-           }
-           a{
-               position: absolute;
-               right: 3px;
-           }
-       } 
-    }
-}
 
 .input-group{
     .search-hero{
@@ -49,7 +47,7 @@
         border-top-left-radius: none !important;
         outline: none !important;
         @media(max-width:500px){
-            width: 283px !important;
+            width: 255px !important;
         }
        }
     }

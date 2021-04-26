@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api:'https://api-nodejs-todolist.herokuapp.com'
+  url:'https://api-nodejs-todolist.herokuapp.com'
 };
 
 /*

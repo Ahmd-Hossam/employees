@@ -1,27 +1,27 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light" dir="rtl" >
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"> Todoist </a>
+    <a class="navbar-brand" href="#"> storage </a>
     <button class="navbar-toggler" (click)="burgur()" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a  class="nav-link" routerLink=""> Home </a>
+          <a  class="nav-link" routerLink=""> الرئيسية </a>
         </li>
       
         <li class="nav-item">
-          <a  class="nav-link" routerLink="/user/notes"> Notes </a>
+          <a  class="nav-link" routerLink="/user/notes"> موظفين </a>
         </li>
       </ul>
 
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav register">
         <li class="nav-item"  *ngIf="!isLoggedIn">
-          <a  class="nav-link" routerLink="auth">Login</a>
+          <a  class="nav-link" routerLink="auth">تسجيل دخول </a>
         </li>
         <li class="nav-item"  *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="auth/register"> Register </a>
+          <a class="nav-link" routerLink="auth/register"> انشاء حساب  </a>
         </li>
         
         <li class="nav-item" *ngIf="isLoggedIn">
@@ -36,42 +36,45 @@
 
 <!-- delate item -->
 <ng-template #profile let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title"> <i class="fas fa-info-circle"></i> info </h4>
+  <div class="modal-header text-right">
+    <h4 class="modal-title" id="modal-basic-title"> <i class="fas fa-info-circle"></i> بياناتي  </h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" >
+  
+  <div class="modal-body text-right">
+    <img src="../../../assets/imgz/5.png" alt=""> <br>
+    <div>
+      <form [formGroup] = "myform" (ngSubmit)="onSubmit()">      
+        <div>
+          <input type="file" name="avatar" (change)="onFileSelect($event)" />
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit">تحميل</button>
+        </div>
+      </form>
+    </div>   
+    <br>
     <div *ngFor='let user of userdata; index as i'>
-      <h2> Name: <span> {{user.name}}  </span>  </h2>
-      <h2> Email: <span> {{user.email}} </span> </h2>
-      <h2> Age:  <span> {{user.age}}   </span>   </h2>
-      <h2> Id:  <span> {{user._id}} </span></h2>
+      <h2>  <span> {{user.name}} : الاسم  </span>  </h2>
+      <h2>  <span> {{user.email}} : الايميل  </span> </h2>
+      <h2>   <span> {{user.age}}  : السن  </span>   </h2>
+      <h2>   <span> {{user._id}}  :  الرقم التعريفي</span></h2>
     </div>
   </div>
   <div class="modal-footer" >
     <div class="buttons">
-      <button class="btn btn-primary" (click)='logout()'> logout</button> &nbsp; &nbsp; or &nbsp; &nbsp;
-      <button class="btn btn-danger" (click)='delate()'> delate my acount </button>
+      <button class="btn btn-primary" (click)='logout()'> تسجيل خروج</button> &nbsp; &nbsp; او &nbsp; &nbsp;
+      <button class="btn btn-danger" (click)='delate()'> حذف حسابي نهائيا  </button>
     </div>
   </div>
 
+  <!--
+      <button class="btn btn-danger" (click)="getimg()"> get img</button>
+  -->
 
-       <!--
-      <div>
-          <form [formGroup] = "myform" (ngSubmit)="onSubmit()">      
-            <div>
-              <input type="file" name="profile" (change)="onFileSelect($event)" />
-            </div>
-            <div>
-              <button type="submit">Upload</button>
-            </div>
-          </form>
-        </div>
-       -->
-  
-       
+ 
   
 </ng-template>
 

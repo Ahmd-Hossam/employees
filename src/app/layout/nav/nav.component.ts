@@ -15,23 +15,26 @@ export class NavComponent implements OnInit {
   isLoggedIn = false;
   userdata:any[]=[]
   myform!:FormGroup
- 
+ user_id:any
   constructor(private fb:FormBuilder, private auth:AuthService, private modal:NgbModal, private toaster:ToastrService, private router:Router) { }
 
   ngOnInit(): void { 
-    //this.build()
+    this.build()//build
+    this.isloggedin()//is loggedin
+
     let user_data:any=localStorage.getItem('user_data') //only json data {"name":"admin"}
     let obj = JSON.parse(user_data);  // covert json to object {name:"admin"}
     this.userdata=Array.of(obj); // make it array of object to can loop it in </>
-
-    //is loggedin
-    this.isloggedin()
 
     //to make  navbar up  when click
     $(document).on('click',function(){
       $('.collapse').collapse('hide');
     })
-
+    //send id
+    for(let i of this.userdata){
+        this.user_id=i._id 
+    }
+  
   }
 
 
@@ -53,8 +56,17 @@ export class NavComponent implements OnInit {
   burgur(){
      this.isloggedin()
   }
+ 
 
-
+  //get img
+  getimg(){
+    this.auth.getimg(this.user_id).subscribe(
+      res=>{
+        console.log(res.url);
+      }
+    )
+  }
+  
   //logout
   logout(){ 
     this.auth.Logout()
@@ -62,8 +74,6 @@ export class NavComponent implements OnInit {
     //is loggedin
     this.isloggedin()
   }
-
-
 
   //delate acount 
   delate(){
@@ -81,34 +91,32 @@ export class NavComponent implements OnInit {
     )
   }
 
-/*
+
 
   build(){
     this.myform=this.fb.group({
-      profile: ['']
+      avatar: ['']
     })
   }
 
 
+
+  file:any
   onFileSelect(event:any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.myform.get('profile').setValue(file);
-    }
-  
+      this.file = event.target.files[0];
   }
   onSubmit() {
-    const formData = new FormData();
-  
+    let formData = new FormData();
+    formData.append('avatar', this.file);
     this.auth.postimg(formData).subscribe(
-      res=>{
-        console.log(res);
-      },
-      err=>{
-        console.log(err);
-      }
-    )
-  }
-*/
+     res =>{
+       console.log(res);
+       this.toaster.success('تم تحميل الصوره بنجاح')
+     },err=>{
+       console.log(err);
+       this.toaster.error('خطا في تحميل الصوره')
+     })
+    }
+
 
 }

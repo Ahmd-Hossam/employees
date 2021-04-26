@@ -17,7 +17,9 @@ import {LayoutModule} from './layout/layout.module';
 //intercenptors
 import { MyInterceptor } from './shard/interceptors';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+//golobal
 import { NavComponent } from './layout/nav/nav.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { NavComponent } from './layout/nav/nav.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-Ng2SearchPipeModule
+    Ng2SearchPipeModule
     
   ],
   providers: [MyInterceptor],

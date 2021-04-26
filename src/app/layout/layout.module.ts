@@ -13,7 +13,8 @@ import { RouterModule } from '@angular/router';
   declarations: [HomeComponent, AuthComponent, UserComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+
   ]
 })
 export class LayoutModule { }

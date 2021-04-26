@@ -11,7 +11,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token=this.auth_ser.getToken()
-    if(request.url.startsWith(env.api)){
+    if(request.url.startsWith('https://api-nodejs-todolist.herokuapp.com')){
       request = request.clone({
         setHeaders:{
           Authorization:`Bearer ${token}`

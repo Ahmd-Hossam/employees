@@ -4,10 +4,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, pipe, Subject, throwError } from 'rxjs';
 import { User } from '../interfaces/user'
-import { catchError, map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { formatDate } from '@angular/common';
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
+
+
 
 
 @Injectable({
@@ -28,18 +27,27 @@ export class AuthService {
   }
 
   register(data:any){
-    return this.http.post<any>(`${env.api}/user/register`,data)
+    return this.http.post<any>(`https://api-nodejs-todolist.herokuapp.com/user/register`,data)
   }
 
 
   login(data:any){
-    return this.http.post<any>(`${env.api}/user/login`,data)
+    return this.http.post<any>(`https://api-nodejs-todolist.herokuapp.com/user/login`,data)
   }
+
+  postimg(img:any){
+    return this.http.post<any>(`https://api-nodejs-todolist.herokuapp.com/user/me/avatar`,img)
+  }
+
+  getimg(id:any){
+    return this.http.get<any>(`https://api-nodejs-todolist.herokuapp.com/user/${id}/avatar`)
+  }
+
 
   getToken() {
     return localStorage.getItem('access_token');
   }
-
+  
 
   get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
@@ -58,7 +66,7 @@ export class AuthService {
   }
 
   delate_User(){
-    return this.http.delete<any>(`${env.api}/user/me`)
+    return this.http.delete<any>(`https://api-nodejs-todolist.herokuapp.com/user/me`)
   }
 
 
@@ -74,13 +82,13 @@ export class AuthService {
 
 
   
-  postimg(file:any){
-    return this.http.post<any>(`${env.api}/user/me/avatar`,file)
-  }
-  getimg(){
-    return this.http.get<any>(`${env.api}/user/6077eda82bedfe0017e0af13/avatar`)
-  }
+ 
+  
 
   
   
 }
+function httpOptionsPlain<T>(arg0: string, img: any, httpOptionsPlain: any) {
+  throw new Error('Function not implemented.');
+}
+
